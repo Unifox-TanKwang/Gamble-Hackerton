@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+   <head>
+       <h1>관리자 페이지</h1>>
+       <style>
+           body{
+               margin: 0px;
+               padding: 0px;
+               font-family: "sans-serif", bold, serif;
+           } 
+           table{
+                width: 100%;
+           }
+           td{
+               text-align: center;
+           }
+           tr:nth-child(even){
+                background-color:gray;               
+           }
+       </style>
+   </head> 
+   <body>
+       <!--
+           백그라운드 투명 이미지로 뺴버림.
+       <img id="logo" src="./logo.png" width="300" height="230" alt="App Logo">
+
+       -->
+            <!--
+            <% for (var i = 0; i < 게시글.length; i++) { %>
+                <tr>
+                    <td><%= i %></td>
+                    <td><%= 게시글[i].신고자 %></td>
+                    <td><%= 게시글[i].링크 %></td>
+                </tr>
+            <% } %>
+            -->
+        <caption>
+            <h2>불법 스포츠 도박 사이트 신고 현황</h2>
+        </caption>
+            <hr/>
+        <form action="db.ejs" method="get">
+            <select id="report_option" name="report">
+                <option value="" selected="">신고옵션</option>
+                <optgroup label="간편신고">
+                    <option value="url">URL</option>
+                    <option value="capture">URL + 캡쳐</option>
+                </optgroup>
+                <optgroup label="구체신고">
+                <option value="recommend">URL + 캡쳐 + 추천인코드</option>
+                <option value="full">종합신고</option>
+                </optgroup>
+            </select> 
+            <input type="submit" value="검색">
+        </form>
+
+        <br/>
+        <table>
+            <tr>
+                <th>연번</th>
+                <th>신고자</th>
+                <th>링크</th>
+                <th>남기는 말</th>
+                <th>마일리지 지급여부</th>
+            </tr>
+
+            <tr class="odd">
+                <th>
+                    <a href = "./detail.html" target="_self">1</a>
+                </th>
+                <th>
+                    <p>raikkonenen7</p>
+                </th>
+                <th>
+                    <p>www.fuckging.com</p>
+                </th>
+                <th>
+                    웹이 젤 싫었어요.
+                </th>
+                <th>
+                    지급됨
+                </th>
+            </tr>
+              <tr class="even">
+                <th>
+                
+                </th>
+                <th>
+                    <p>raikkonenen7</p>
+                </th>
+                <th>
+                    <p>http:fuckingweb.com</p>
+                </th>
+                <th>
+                    웹이 젤 싫었어요.
+                </th>
+                <th>
+                    거절됨
+                </th>
+            </tr>
+
+           <tr class="odd">
+                <th>
+                
+                </th>
+                <th>
+                    <p>raikkonenen7</p>
+                </th>
+                <th>
+                    <p>http:fuckingweb.com</p>
+                </th>
+                <th>
+                    웹이 젤 싫었어요.
+                </th>
+                <th>
+                    비고란
+                </th>
+            </tr>
+
+           <tr class="even">
+                <th>
+                
+                </th>
+                <th>
+                    <p>raikkonenen7</p>
+                </th>
+                <th>
+                    <p>http:fuckingweb.com</p>
+                </th>
+                <th>
+                    웹이 젤 싫었어요.
+                </th>
+                <th>
+                    비고란
+                </th>
+            </tr>
+        </table>
+   </body>
+</html>
