@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+   <head>
+       <h1>관리자 페이지</h1>>
+       <style>
+           body{
+               margin: 0px;
+               padding: 0px;
+               font-family: "sans-serif", bold, serif;
+           }
+           table{
+                width: 100%;
+           }
+           td{
+               text-align: center;
+           }
+           tr:nth-child(even){
+                background-color:gray;
+           }
+       </style>
+   </head>
+   <body>
+       <caption>
+            <h2>불법 스포츠 도박 사이트 신고 현황</h2>
+        </caption>
+        <hr/>
+        <!-- 아래 db.ejs는 데이터를 받을 백엔드 파일-->
+        <!-- option의 value에 따라서 쿼리문 변동. 간편신고용 쿼리, 종합신고용 쿼리, 기타 쿼리-->
+        <form action="/report" method="post">
+            <select id="report_option" name="report">
+                <option value="" selected="">신고옵션</option>
+                <optgroup label="간편신고">
+                    <option value="url">URL</option>
+                    <option value="capture">URL + 캡쳐</option>
+                <option value="recommend">URL + 캡쳐 + 추천인코드</option>
+                </optgroup>
+
+                <optgroup label="구체신고">
+                    <option value="full">종합신고</option>
+                </optgroup>
+
+                <optgroup label="기타">
+                    <option value="time">시간순서</option>
+                    <option value="best">최다신고순</option>
+                    <option value="best">차단 완료</option>
+                </optgroup>
+            </select>
+            <input type="submit" value="검색">
+        </form>
+        <br/>
+        <table>
+            <tr>
+                <th>연번</th>
+                <th>신고자</th>
+                <th>링크</th>
+                <th>메시지</th>
+                <th>차단 여부</th>
+            </tr>
+            <% for (var i = 0; i < data.length; i++) { %>
+              <tr>
+                <td><%= i %></td>
+                <td><%= data[i].id%></td>
+                <td><%= data[i].link %></td>
+                <td><%= data[i].comment %></td>
+                <td><%= data[i].ban%></td>
+              </tr>
+            <% } %>
+
+            <tr class="odd">
+                <th>
+                    <a href = "./detail.html" target="_self">1</a>
+                </th>
+                <th>
+                    <p>raikkonenen7</p>
+                </th>
+                <th>
+                    <p>www.fuckging.com</p>
+                </th>
+                <th>
+                    웹이 젤 싫었어요.
+                </th>
+                <th>
+                    지급됨
+                </th>
+            </tr>
+              <tr class="even">
+                <th>
+
+                </th>
+                <th>
+                    <p>raikkonenen7</p>
+                </th>
+                <th>
+                    <p>http:fuckingweb.com</p>
+                </th>
+                <th>
+                    웹이 젤 싫었어요.
+                </th>
+                <th>
+                    거절됨
+                </th>
+            </tr>
+
+           <tr class="odd">
+                <th>
+
+                </th>
+                <th>
+                    <p>raikkonenen7</p>
+                </th>
+                <th>
+                    <p>http:fuckingweb.com</p>
+                </th>
+                <th>
+                    웹이 젤 싫었어요.
+                </th>
+                <th>
+                    비고란
+                </th>
+            </tr>
+
+           <tr class="even">
+                <th>
+
+                </th>
+                <th>
+                    <p>raikkonenen7</p>
+                </th>
+                <th>
+                    <p>http:fuckingweb.com</p>
+                </th>
+                <th>
+                    웹이 젤 싫었어요.
+                </th>
+                <th>
+                    비고란
+                </th>
+            </tr>
+        </table>
+   </body>
+</html>
