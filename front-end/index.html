@@ -20,49 +20,59 @@
        </style>
    </head> 
    <body>
-       <!--
-           백그라운드 투명 이미지로 뺴버림.
-       <img id="logo" src="./logo.png" width="300" height="230" alt="App Logo">
-
-       -->
-            <!--
-            <% for (var i = 0; i < 게시글.length; i++) { %>
-                <tr>
-                    <td><%= i %></td>
-                    <td><%= 게시글[i].신고자 %></td>
-                    <td><%= 게시글[i].링크 %></td>
-                </tr>
-            <% } %>
-            -->
-        <caption>
+       <caption>
             <h2>불법 스포츠 도박 사이트 신고 현황</h2>
         </caption>
-            <hr/>
+        <hr/>
+        <!-- 아래 db.ejs는 데이터를 받을 백엔드 파일-->
+        <!-- option의 value에 따라서 쿼리문 변동. 간편신고용 쿼리, 종합신고용 쿼리, 기타 쿼리-->
         <form action="db.ejs" method="get">
             <select id="report_option" name="report">
                 <option value="" selected="">신고옵션</option>
                 <optgroup label="간편신고">
                     <option value="url">URL</option>
                     <option value="capture">URL + 캡쳐</option>
-                </optgroup>
-                <optgroup label="구체신고">
                 <option value="recommend">URL + 캡쳐 + 추천인코드</option>
-                <option value="full">종합신고</option>
+                </optgroup>
+
+                <optgroup label="구체신고">
+                    <option value="full">종합신고</option>
+                </optgroup>
+
+                <optgroup label="기타">
+                    <option value="time">시간순서</option>
+                    <option value="best">최다신고순</option>
+                    <option value="best">차단 완료</option>
                 </optgroup>
             </select> 
             <input type="submit" value="검색">
         </form>
-
         <br/>
         <table>
             <tr>
                 <th>연번</th>
                 <th>신고자</th>
                 <th>링크</th>
-                <th>남기는 말</th>
-                <th>마일리지 지급여부</th>
+                <th>메시지</th>
+                <th>차단 여부</th>
             </tr>
+            <!--
+                ejs 코드.
+                검색 조건에 맞춰 출력.
+            <% for (var i = 0; i < 게시글.length; i++) { %>
+                <tr>
+                    <td><%= i %></td>                       // 연번
+                    <td><%= 게시글[i].신고자 %></td>
+                    <td><%= 게시글[i].링크 %></td>
+                    <td><%= 게시글[i].메시지 %></td>
+                    <td><%= 게시글[i].차단여부%></td>
+                </tr>
+            <% } %>
 
+            메시지, 차단여부는 기본적으로 NULL값.
+
+            -->
+ 
             <tr class="odd">
                 <th>
                     <a href = "./detail.html" target="_self">1</a>
